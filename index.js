@@ -1,34 +1,41 @@
-function newImg(source, position, left, bottom) {
+//functions to add images/items
+function newImg(source, left, bottom) {
   let image = document.createElement("img");
   image.src = source;
-  image.style.position = position;
-  image.style.left = left;
-  image.style.bottom = bottom;
+  image.style.position = "fixed";
+  image.style.left = left + "px";
+  image.style.bottom = bottom + "px";
   document.body.append(image);
+  return image;
 }
 
+function newItem(url, left, bottom) {
+  let item = newImg(url, left, bottom);
+  item.addEventListener("dblclick", function () {
+    item.remove();
+  });
+}
+
+newImg("./assets/green-character.gif", 100, 100);
+newImg("./assets/pine-tree.png", 450, 200);
+newImg("./assets/tree.png", 200, 300);
+newImg("./assets/pillar.png", 350, 100);
+newImg("./assets/crate.png", 150, 200);
+newImg("./assets/well.png", 500, 425);
+
 /*
-let greenCharacter = document.createElement("img");
-greenCharacter.src = "assets/green-character.gif";
-greenCharacter.style.position = "fixed";
-greenCharacter.style.left = "100px";
-greenCharacter.style.bottom = "100px";
-document.body.append(greenCharacter);
+let sword = document.createElement("img");
+sword.src = "./assets/sword.png";
+sword.style.position = "fixed";
+sword.style.left = "500px";
+sword.style.bottom = "405px";
+document.body.append(sword);
 
-
-//create pine tree
-let pineTree = document.createElement("img");
-pineTree.src = "./assets/pine-tree.png";
-pineTree.style.position = "fixed";
-pineTree.style.left = "450px";
-pineTree.style.bottom = "200px";
-document.body.append(pineTree);
+sword.addEventListener("click", function () {
+  sword.remove();
+});
 */
 
-//Add images using newImg function
-newImg("./assets/green-character.gif", "fixed", "100px", "100px");
-newImg("./assets/pine-tree.png", "fixed", "450px", "200px");
-newImg("./assets/tree.png", "fixed", "200px", "300px");
-newImg("./assets/pillar.png", "fixed", "350px", "100px");
-newImg("./assets/crate.png", "fixed", "150px", "200px");
-newImg("./assets/well.png", "fixed", "500px", "425px");
+newItem("./assets/sword.png", 500, 405);
+newItem("./assets/sheild.png", 165, 185);
+newItem("./assets/staff.png", 600, 100);
